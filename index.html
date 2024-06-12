@@ -10,6 +10,9 @@
      <!-- daisyUi and tailwind links  -->
      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
      <script src="https://cdn.tailwindcss.com"></script>
+
+     <!-- external css  -->
+      <link rel="stylesheet" href="/css/style.css">
     <title>Nahida</title>
 </head>
 <body class="p-5">
@@ -26,19 +29,22 @@
      
      <!-- for desktop view starts  -->
      <aside id="default-sidebar" class="fixed   p-5 top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-        <div class="h-full rounded-lg px-3 py-4 overflow-y-auto bg-gray-200 dark:bg-gray-800">
+        <div class="h-full rounded-lg px-3 py-4 overflow-y-auto bg-[#2A3132]  dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
                 <!-- <li>
                     <img src="/images/user.png" alt="">
                 </li> -->
                 <li>
-                    <a href="#profile" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="#profile" class=" items-center rounded-lg dark:text-white  group">
                         <!-- <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                             <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                             <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                         </svg>
                         <span class="ms-3">Dashboard</span> -->
                         <img src="/images/user.png" alt="">
+                        <h1 class="text-3xl text-white text-center bg-sky-800 ">Name</h1>
+                        
+                        
                     </a>
                 </li>
                 <li>
@@ -64,13 +70,26 @@
        <!-- for desktop view ends  -->
 
        <!-- side bar starts  -->
-       <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 sm:ml-64" id="content" >
+       <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 sm:ml-56" id="content" >
      
         
             <!-- Default content for dashboard -->
         <div id="profile-content">
-            <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-200">Dashboard Content</h1>
-            <p>This is the dashboard content. Replace this with your actual dashboard content.</p>
+            <div class="hero min-h-screen w-full lg:min-h-[90vh]" style="background-image: url(/images/banner.jpg);">
+                <div class="hero-overlay bg-opacity-60"></div>
+                <div class="hero-content text-center text-neutral-content">
+                  <div class="max-w-md">
+                    <h1 class="mb-5 text-5xl font-bold">My Name</h1>
+                    
+                    <h1 class="ml10 w-96">
+                        <span class="text-wrapper">
+                          <span class="letters">Domino Dreams</span>
+                        </span>
+                      </h1>
+                    
+                  </div>
+                </div>
+              </div>
         </div>
         <!-- Content for Inbox -->
         <div id="inbox-content" style="display: none;">
@@ -120,6 +139,28 @@
     });
 </script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+<script>
+    // Wrap every letter in a span
+var textWrapper = document.querySelector('.ml10 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml10 .letter',
+    rotateY: [-90, 0],
+    duration: 1300,
+    delay: (el, i) => 45 * i
+  }).add({
+    targets: '.ml10',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+</script>
        <!-- script ends  -->
 </body>
 </html>
