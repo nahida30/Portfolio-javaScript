@@ -12,7 +12,7 @@
      <script src="https://cdn.tailwindcss.com"></script>
     <title>Nahida</title>
 </head>
-<body>
+<body class="p-5">
 
     <!-- for mobile view starts  -->
     <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -60,7 +60,68 @@
             </ul>
         </div>
     </aside>
-
        <!-- for desktop view ends  -->
+
+       <!-- side bar starts  -->
+       <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 sm:ml-64" id="content" >
+        <div >
+            <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-200"> Content</h1>
+            <p>This is the dashboard content. Replace this with your actual dashboard content.</p>
+        </div>
+        
+            <!-- Default content for dashboard -->
+        <div id="dashboard-content">
+            <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-200">Dashboard Content</h1>
+            <p>This is the dashboard content. Replace this with your actual dashboard content.</p>
+        </div>
+        <!-- Content for Inbox -->
+        <div id="inbox-content" style="display: none;">
+            <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-200">Inbox Content</h1>
+            <p>This is the inbox content. Replace this with your actual inbox content.</p>
+        </div>
+        <!-- Content for Users -->
+        <div id="users-content" style="display: none;">
+            <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-200">Users Content</h1>
+            <p>This is the users content. Replace this with your actual users content.</p>
+        </div>
+          
+              </div>
+       <!-- sidebar ends  -->
+
+
+       <!-- script starts  -->
+        
+ <script>
+    // Get the content div
+    const content = document.getElementById('content');
+
+    // Add event listener to the sidebar links
+    document.querySelectorAll('#default-sidebar a').forEach(item => {
+        item.addEventListener('click', event => {
+            event.preventDefault();
+            // Hide all content divs initially
+            document.querySelectorAll('#content > div').forEach(contentDiv => {
+                contentDiv.style.display = 'none';
+            });
+            // Extract the href attribute of the clicked link
+            const href = item.getAttribute('href');
+            // Show the corresponding content div based on the href
+            switch(href) {
+                case '#dashboard':
+                    document.getElementById('dashboard-content').style.display = 'block';
+                    break;
+                case '#inbox':
+                    document.getElementById('inbox-content').style.display = 'block';
+                    break;
+                case '#users':
+                    document.getElementById('users-content').style.display = 'block';
+                    break;
+                // Add cases for other sidebar items as needed
+            }
+        });
+    });
+</script>
+
+       <!-- script ends  -->
 </body>
 </html>
